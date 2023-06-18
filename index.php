@@ -11,7 +11,7 @@
     $uId = $_SESSION["uid"];
 
     $courses = getByQuery("SELECT * FROM courses ORDER BY id ASC LIMIT 3");
-    $tutors = getByQuery("SELECT * FROM tutors ORDER BY id ASC LIMIT 3");
+    $tutors = getByQuery("SELECT * FROM users WHERE role = 't' ORDER BY id ASC LIMIT 3");
 
     if (isset($_POST["cosubmit"])) {
         $check = createContact($_POST);

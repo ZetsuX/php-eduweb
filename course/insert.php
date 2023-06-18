@@ -6,7 +6,7 @@
         exit;
     }
 
-    if ($_SESSION['urole'] != 'tutor'){
+    if ($_SESSION['urole'] != 't'){
       header('Location: index.php');
       exit;
     }
