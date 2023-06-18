@@ -42,6 +42,7 @@ if (isset($_POST["cosubmit"])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         * {
@@ -55,7 +56,7 @@ if (isset($_POST["cosubmit"])) {
 
 <body>
     <section class="h-screen w-full bg-[#FDF8EE] relative mb-10">
-        <header class="fixed top-0 w-full flex justify-between items-center min-h-[5rem] px-12">
+        <header class="fixed top-0 w-full flex justify-between items-center min-h-[5rem] px-12 z-10">
             <div class="flex items-center gap-x-3"><img src="images/logo.svg" alt="logo-eduweb" width="30" height="30"><span class="uppercase text-xl font-bold">eduweb</span></div>
             <ul class="flex items-center gap-x-8">
                 <li><a href="#home" class="text-sm font-medium">Home</a></li>
@@ -107,11 +108,238 @@ if (isset($_POST["cosubmit"])) {
             </div>
         </div>
     </section>
-    <section class="min-h-screen w-full max-w-[1280px] mx-auto h-full py-24 flex justify-center">
-        <div class="space-y-4">
+    <section class="min-h-screen w-full max-w-[1280px] mx-auto h-full py-24 justify-center">
+        <div class="space-y-4 text-center">
             <h2 class="text-4xl font-bold text-center">Our Courses</h2>
             <p>Lorem ipsum is simply dummy text of the printing.</p>
         </div>
+        <div class="w-full justify-between flex flex-row py-24 gap-x-8">
+            <div class="w-1/3 px-2 pt-2 py-10 shadow-lg rounded-lg relative">
+                <img src="images/courses.png" alt="">
+                <div class='text-[#ACACAC] flex justify-between w-full items-center pt-2'>
+                    <h3>Frontend Engineer</h3>
+                    <img src="images/rating.png" alt="" width='80px'>
+                </div>
+                <div>
+                    <h3 class='font-semibold'>Frontend Engineering for Beginners</h3>
+                    <p class='text-[#FF7426] font-semibold'>Rp 129.000</p>
+                </div>
+                <div class="w-full border-2 border-dashed my-2"></div>
+                <div class='flex gap-x-4'>
+                    <div class="flex gap-x-2 justify-center items-center">
+                        <i class="fa-regular fa-clock"></i>
+                        <h3 class="text-[#ACACAC] text-sm" >22hr 30min</h3>
+                    </div>
+                    <div class="flex gap-x-2 justify-center items-center">
+                        <i class="fa-solid fa-video"></i>
+                        <h3 class="text-[#ACACAC] text-sm" >34 Courses</h3>
+                    </div>
+                    <div class="flex gap-x-2 justify-center items-center">
+                        <i class="fa-solid fa-download"></i>
+                        <h3 class="text-[#ACACAC]" >250 Sales</h3>
+                    </div>
+                </div>
+                <div class='absolute bottom-0 left-1/2 -translate-x-1/2'>
+                    <a href="" class="px-6 py-3 rounded-3xl bg-[#FF7426] text-white font-medium">Join Course</a>
+                </div>
+            </div>
+            <div class="w-1/3 px-2 pt-2 py-10 shadow-lg rounded-lg relative">
+                <img src="images/courses2.png" alt="">
+                <div class='text-[#ACACAC] flex justify-between w-full items-center pt-2'>
+                    <h3>Backend Engineer</h3>
+                    <img src="images/rating.png" alt="" width='80px'>
+                </div>
+                <div>
+                    <h3 class='font-semibold'>Backend Engineering for Beginners</h3>
+                    <p class='text-[#FF7426] font-semibold'>Rp 259.000</p>
+                </div>
+                <div class="w-full border-2 border-dashed my-2"></div>
+                <div class='flex gap-x-4'>
+                    <div class="flex gap-x-2 justify-center items-center">
+                        <i class="fa-regular fa-clock"></i>
+                        <h3 class="text-[#ACACAC] text-sm" >22hr 30min</h3>
+                    </div>
+                    <div class="flex gap-x-2 justify-center items-center">
+                        <i class="fa-solid fa-video"></i>
+                        <h3 class="text-[#ACACAC] text-sm" >34 Courses</h3>
+                    </div>
+                    <div class="flex gap-x-2 justify-center items-center">
+                        <i class="fa-solid fa-download"></i>
+                        <h3 class="text-[#ACACAC]" >250 Sales</h3>
+                    </div>
+                </div>
+                <div class='absolute bottom-0 left-1/2 -translate-x-1/2'>
+                    <a href="" class="px-6 py-3 rounded-3xl bg-[#FF7426] text-white font-medium">Join Course</a>
+                </div>
+            </div>
+            <div class="w-1/3 px-2 pt-2 py-10 shadow-lg rounded-lg relative">
+                <img src="images/courses3.png" alt="">
+                <div class='text-[#ACACAC] flex justify-between w-full items-center pt-2'>
+                    <h3>Fullstack Engineer</h3>
+                    <img src="images/rating.png" alt="" width='80px'>
+                </div>
+                <div>
+                    <h3 class='font-semibold'>Fullstack Engineering for Beginners</h3>
+                    <p class='text-[#FF7426] font-semibold'>Rp 199.000</p>
+                </div>
+                <div class="w-full border-2 border-dashed my-2"></div>
+                <div class='flex gap-x-4'>
+                    <div class="flex gap-x-2 justify-center items-center">
+                        <i class="fa-regular fa-clock"></i>
+                        <h3 class="text-[#ACACAC] text-sm" >22hr 30min</h3>
+                    </div>
+                    <div class="flex gap-x-2 justify-center items-center">
+                        <i class="fa-solid fa-video"></i>
+                        <h3 class="text-[#ACACAC] text-sm" >34 Courses</h3>
+                    </div>
+                    <div class="flex gap-x-2 justify-center items-center">
+                        <i class="fa-solid fa-download"></i>
+                        <h3 class="text-[#ACACAC]" >250 Sales</h3>
+                    </div>
+                </div>
+                <div class='absolute bottom-0 left-1/2 -translate-x-1/2'>
+                    <a href="" class="px-6 py-3 rounded-3xl bg-[#FF7426] text-white font-medium">Join Course</a>
+                </div>
+            </div>
+        </div>
+        <div class='text-center text-purple-800 font-semibold w-fit border-b mx-auto border-purple-700'>
+            <h3>Lihat Semua</h3>
+        </div>
+    </section>
+    <section class='bg-[#4D2C5E] w-full mx-auto justify-center flex px-2 py-4'>
+        <div class='max-w-[1280px] justify-center flex'>
+            <div class='w-1/2'>
+                <img src="images/asset.png" alt="" width='300px'>
+            </div>
+            <div class='w-1/2 space-y-6 flex flex-col justify-center'>
+                <div class='text-white font-semibold'>
+                    <h3 class='text-[60px]'>Premium <span class='text-[#FF7426]'>Learning</span> Experience</h3>
+                </div>
+                <div class='space-y-8'>
+                    <div class="flex gap-x-8 items-center text-white">
+                        <img src="images/hearts.png" alt="" width='40px'>
+                        <div>
+                            <h3 class='text-lg'>Easily Acessible</h3>
+                            <p class='text-[#ACACAC]'>Learning will feel very comfortable with EduWeb</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-x-8 items-center text-white">
+                        <img src="images/jigsaw.png" alt="" width='40px'>
+                        <div>
+                            <h3 class='text-lg'>Easily Acessible</h3>
+                            <p class='text-[#ACACAC]'>Learning will feel very comfortable with EduWeb</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="min-h-screen w-full max-w-[1280px] mx-auto h-full py-24 justify-center relative">
+        <div class="space-y-4 text-center">
+            <h2 class="text-4xl font-bold text-center">Our Tutors</h2>
+            <p>Lorem ipsum is simply dummy text of the printing.</p>
+        </div>
+        <div class="w-full justify-between flex flex-row py-24 gap-x-8">
+            <div class="w-1/3 px-2 pt-2 py-10 shadow-lg rounded-lg relative">
+                <img src="images/tutor.png" alt="">
+                <div class='text-[#ACACAC] flex justify-between w-full items-center pt-2'>
+                    <h3>Basic Frontend</h3>
+                    <img src="images/rating.png" alt="" width='80px'>
+                </div>
+                <div>
+                    <h3 class='font-semibold'>Calvin Janitra</h3>
+                    <p class='text-[#FF7426] font-semibold'>Frontend Developer in Tokopedia</p>
+                </div>
+                <div class="w-full border-2 border-dashed my-2"></div>
+                <div class='flex gap-x-4'>
+                    <div class="flex gap-x-2 justify-center items-center">
+                        <i class="fa-regular fa-clock"></i>
+                        <h3 class="text-[#ACACAC] text-sm" >22hr 30min</h3>
+                    </div>
+                    <div class="flex gap-x-2 justify-center items-center">
+                        <i class="fa-solid fa-video"></i>
+                        <h3 class="text-[#ACACAC] text-sm" >34 Courses</h3>
+                    </div>
+                    <div class="flex gap-x-2 justify-center items-center">
+                        <i class="fa-solid fa-download"></i>
+                        <h3 class="text-[#ACACAC]" >250 Sales</h3>
+                    </div>
+                </div>
+                <div class='absolute bottom-0 left-1/2 -translate-x-1/2'>
+                    <a href="" class="px-6 py-3 rounded-3xl bg-[#FF7426] text-white font-medium">Join Course</a>
+                </div>
+            </div>
+            <div class="w-1/3 px-2 pt-2 py-10 shadow-lg rounded-lg relative">
+                <img src="images/tutor.png" alt="">
+                <div class='text-[#ACACAC] flex justify-between w-full items-center pt-2'>
+                    <h3>Advanced Frontend</h3>
+                    <img src="images/rating.png" alt="" width='80px'>
+                </div>
+                <div>
+                    <h3 class='font-semibold'>Zhafran Dzaky</h3>
+                    <p class='text-[#FF7426] font-semibold'>Senior Frontend Developer in Spotify</p>
+                </div>
+                <div class="w-full border-2 border-dashed my-2"></div>
+                <div class='flex gap-x-4'>
+                    <div class="flex gap-x-2 justify-center items-center">
+                        <i class="fa-regular fa-clock"></i>
+                        <h3 class="text-[#ACACAC] text-sm" >22hr 30min</h3>
+                    </div>
+                    <div class="flex gap-x-2 justify-center items-center">
+                        <i class="fa-solid fa-video"></i>
+                        <h3 class="text-[#ACACAC] text-sm" >34 Courses</h3>
+                    </div>
+                    <div class="flex gap-x-2 justify-center items-center">
+                        <i class="fa-solid fa-download"></i>
+                        <h3 class="text-[#ACACAC]" >250 Sales</h3>
+                    </div>
+                </div>
+                <div class='absolute bottom-0 left-1/2 -translate-x-1/2'>
+                    <a href="" class="px-6 py-3 rounded-3xl bg-[#FF7426] text-white font-medium">Join Course</a>
+                </div>
+            </div>
+            <div class="w-1/3 px-2 pt-2 py-10 shadow-lg rounded-lg relative">
+                <img src="images/tutor.png" alt="">
+                <div class='text-[#ACACAC] flex justify-between w-full items-center pt-2'>
+                    <h3>Fullstack Engineer</h3>
+                    <img src="images/rating.png" alt="" width='80px'>
+                </div>
+                <div>
+                    <h3 class='font-semibold'>Kevin Nathanael</h3>
+                    <p class='text-[#FF7426] font-semibold'>Backend Developer in Shopee</p>
+                </div>
+                <div class="w-full border-2 border-dashed my-2"></div>
+                <div class='flex gap-x-4'>
+                    <div class="flex gap-x-2 justify-center items-center">
+                        <i class="fa-regular fa-clock"></i>
+                        <h3 class="text-[#ACACAC] text-sm" >22hr 30min</h3>
+                    </div>
+                    <div class="flex gap-x-2 justify-center items-center">
+                        <i class="fa-solid fa-video"></i>
+                        <h3 class="text-[#ACACAC] text-sm" >34 Courses</h3>
+                    </div>
+                    <div class="flex gap-x-2 justify-center items-center">
+                        <i class="fa-solid fa-download"></i>
+                        <h3 class="text-[#ACACAC]" >250 Sales</h3>
+                    </div>
+                </div>
+                <div class='absolute bottom-0 left-1/2 -translate-x-1/2'>
+                    <a href="" class="px-6 py-3 rounded-3xl bg-[#FF7426] text-white font-medium">Join Course</a>
+                </div>
+            </div>
+        </div>
+        <div class='text-center text-purple-800 font-semibold w-fit border-b mx-auto border-purple-700'>
+            <h3>Lihat Semua</h3>
+        </div>
+        <div class="w-9/12 bg-[#4D2C5E] text-white absolute -bottom-28 mx-auto px-8 py-10 flex flex-col justify-center left-1/2 -translate-x-1/2 rounded-2xl">
+            <div class='text-center space-y-4'>
+                <h3 class='text-lg'>Contact Us!</h3>
+                <p>Lorem Ipsum is simply dummy text of the printing.</p>
+                <input type="text" class='px-2 py-4 rounded-xl focus:outline-none' placeholder="Email Adress">
+            </div>
+        </div>
+    </section>
+    <section class="w-full mx-auto py-24 justify-center bg-[#FDF8EE] min-h-[400px]">
     </section>
 </body>
 
