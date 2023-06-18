@@ -203,7 +203,7 @@ if (isset($_POST["cosubmit"])) {
             </div>
         </div>
         <div class='text-center text-purple-800 font-semibold w-fit border-b mx-auto border-purple-700'>
-            <h3>Lihat Semua</h3>
+            <a href='courses.php'>Lihat Semua</a>
         </div>
     </section>
     <section class='bg-[#4D2C5E] w-full mx-auto justify-center flex px-2 py-4'>
@@ -329,7 +329,21 @@ if (isset($_POST["cosubmit"])) {
             </div>
         </div>
         <div class='text-center text-purple-800 font-semibold w-fit border-b mx-auto border-purple-700'>
-            <h3>Lihat Semua</h3>
+            <a href='tutors.php'>Lihat Semua</a>
+        </div>
+    </section>
+
+    <!-- testimonial -->
+    <section class="min-h-screen w-full max-w-[1280px] mx-auto h-full py-24 justify-center relative">
+        <div class="space-y-4 text-center flex flex-col items-center">
+            <h2 class="text-4xl font-bold text-center">Student Testimonial</h2>
+            <p class="w-3/5 text-center">vel fringilla est ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum dui faucibus in ornare quam viverra orci</p>
+        </div>
+        <div class="w-2/5 py-24 mx-auto">
+            <div class='flex justify-center items-center gap-x-4 border-2 border-solid w-fit px-2 py-2'>
+                <img src="images/pfp.png" alt="" width="100px">
+                <h3 class=''>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor</h3>
+            </div>
         </div>
         <div class="w-9/12 bg-[#4D2C5E] text-white absolute -bottom-28 mx-auto px-8 py-10 flex flex-col justify-center left-1/2 -translate-x-1/2 rounded-2xl">
             <div class='text-center space-y-4'>
@@ -339,6 +353,7 @@ if (isset($_POST["cosubmit"])) {
             </div>
         </div>
     </section>
+    <!-- footer -->
     <section class="w-full mx-auto py-24 justify-center bg-[#FDF8EE] min-h-[400px]">
     </section>
 </body>
