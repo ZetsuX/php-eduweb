@@ -10,7 +10,7 @@ require 'utils/functions.php';
 
 $uId = $_SESSION["uid"];
 
-$courses = getByQuery("SELECT * FROM courses ORDER BY id ASC LIMIT 3");
+$courses = getByQuery("SELECT co.name as course_name, co.description as course_description, co.price as course_price, pa.name as partner_name, pa.logo as partner_logo FROM courses co INNER JOIN partners pa ON pa.id = co.partner_id ORDER BY co.id ASC LIMIT 3");
 $tutors = getByQuery("SELECT * FROM users WHERE role = 't' ORDER BY id ASC LIMIT 3");
 
 if (isset($_POST["cosubmit"])) {
@@ -19,14 +19,14 @@ if (isset($_POST["cosubmit"])) {
         echo "
                 <script>
                     alert('Succesfully contacted us!');
-                    document.location.href = '../index.php';
+                    document.location.href = 'index.php';
                 </script>
             ";
     } else if ($check !== 0) {
         echo "
                 <script>
                     alert('Failed to contact us..');
-                    document.location.href = '../index.php';
+                    document.location.href = 'index.php';
                 </script>
             ";
     }
@@ -202,7 +202,7 @@ if (isset($_POST["cosubmit"])) {
                 </div>
             </div>
         </div>
-        <div class='text-center text-purple-800 font-semibold w-fit border-b mx-auto border-purple-700'>
+        <div class='text-center text-slate-800 font-semibold w-fit border-b mx-auto border-slate-700'>
             <a href='courses.php'>Lihat Semua</a>
         </div>
     </section>
@@ -213,7 +213,7 @@ if (isset($_POST["cosubmit"])) {
             </div>
             <div class='w-1/2 space-y-6 flex flex-col justify-center'>
                 <div class='text-white font-semibold'>
-                    <h3 class='text-[60px]'>Premium <span class='text-[#FF7426]'>Learning</span> Experience</h3>
+                    <h3 class='text-6xl'>Premium <span class='text-[#FF7426]'>Learning</span> Experience</h3>
                 </div>
                 <div class='space-y-8'>
                     <div class="flex gap-x-8 items-center text-white">
@@ -328,7 +328,7 @@ if (isset($_POST["cosubmit"])) {
                 </div>
             </div>
         </div>
-        <div class='text-center text-purple-800 font-semibold w-fit border-b mx-auto border-purple-700'>
+        <div class='text-center text-slate-800 font-semibold w-fit border-b mx-auto border-slate-700'>
             <a href='tutors.php'>Lihat Semua</a>
         </div>
     </section>
@@ -339,22 +339,37 @@ if (isset($_POST["cosubmit"])) {
             <h2 class="text-4xl font-bold text-center">Student Testimonial</h2>
             <p class="w-3/5 text-center">vel fringilla est ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum dui faucibus in ornare quam viverra orci</p>
         </div>
-        <div class="w-2/5 py-24 mx-auto">
-            <div class='flex justify-center items-center gap-x-4 border-2 border-solid w-fit px-2 py-2'>
-                <img src="images/pfp.png" alt="" width="100px">
-                <h3 class=''>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor</h3>
+        <div class="py-24 w-[440px] mx-auto">
+            <div class='flex justify-end items-center gap-x-4 border-2 border-[#4D2C5E] shadow-md rounded-xl w-fit p-4 pt-5 pb-2 relative'>
+                <img src="images/pfp.png" alt="" width="120" height="120" class="absolute -left-14 top-1/2 -translate-y-1/2">
+                <div class="flex flex-col w-10/12 gap-y-1">
+                    <p class=''>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor</p>
+                    <p class="text-right text-sm">- Joe stanlee</p>
+                </div>
             </div>
         </div>
-        <div class="w-9/12 bg-[#4D2C5E] text-white absolute -bottom-28 mx-auto px-8 py-10 flex flex-col justify-center left-1/2 -translate-x-1/2 rounded-2xl">
-            <div class='text-center space-y-4'>
-                <h3 class='text-lg'>Contact Us!</h3>
-                <p>Lorem Ipsum is simply dummy text of the printing.</p>
-                <input type="text" class='px-2 py-4 rounded-xl focus:outline-none' placeholder="Email Adress">
+        <div class="w-9/12 bg-[#4D2C5E] text-white absolute -bottom-28 mx-auto px-8 py-16 flex flex-col justify-center left-1/2 -translate-x-1/2 rounded-2xl z-10">
+            <div class='text-center space-y-6 flex flex-col justify-center'>
+                <h3 class='text-3xl font-semibold'>Contact Us!</h3>
+                <p class="mb-2">Lorem Ipsum is simply dummy text of the printing.</p>
+                <div class="w-full flex justify-center">
+                <form method="post" class="relative w-1/2">
+                    <input type="hidden" name="couid" id="couid" value=<?= $_SESSION['uid'] ?> />
+                    <input type="text" name="comessage" id="comessage" class='px-10 py-4 w-full text-black rounded-full focus:outline-2 focus:outline-[#ACACAC]' placeholder="Masukkan pesan Anda">
+                    <button name="cosubmit" id="cosubmit" type="submit" class="rounded-full bg-[#FF7426] absolute right-1.5 px-8 py-3 font-medium top-1/2 -translate-y-1/2">Send</button>
+                </form>
+                </div>
             </div>
         </div>
     </section>
     <!-- footer -->
-    <section class="w-full mx-auto py-24 justify-center bg-[#FDF8EE] min-h-[400px]">
+    <section class="w-full mx-auto pt-24 pb-16 bg-[#FDF8EE] h-[400px]">
+        <div class="flex justify-center items-end gap-x-4 text-xl h-full">
+            <a class="hover:opacity-75 cursor-pointer" href="https://github.com/ZetsuX/php-eduweb"><i class="fa-brands fa-github"></i></a>
+            <a class="hover:opacity-75 cursor-pointer" href=""><i class="fa-brands fa-facebook"></i></a>
+            <a class="hover:opacity-75 cursor-pointer" href=""><i class="fa-brands fa-linkedin-in"></i></a>
+            <a class="hover:opacity-75 cursor-pointer" href=""><i class="fa-brands fa-twitter"></i></a>
+        </div>
     </section>
 </body>
 
