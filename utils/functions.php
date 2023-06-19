@@ -98,4 +98,12 @@
         mysqli_query($dbConn, $query);
         return mysqli_affected_rows($dbConn);
     }
+    function courseAdmit($uId, $cId) {
+        global $dbConn;
+        
+        $query = "INSERT INTO admissions (timestamp, user_id, course_id) VALUES (CURRENT_TIMESTAMP,$uId,$cId)";
+
+        mysqli_query($dbConn, $query);
+        return mysqli_affected_rows($dbConn);
+    }
 ?>

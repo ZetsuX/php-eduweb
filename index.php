@@ -10,9 +10,14 @@ require 'utils/functions.php';
 
 $uId = $_SESSION["uid"];
 
-$courses = getByQuery("SELECT co.name as course_name, co.description as course_description, co.price as course_price, co.picture as course_picture, pa.name as partner_name, pa.logo as partner_logo FROM courses co INNER JOIN partners pa ON pa.id = co.partner_id LIMIT 3");
-$tutors = getByQuery("SELECT co.name as course_name, co.description as course_description, co.price as course_price, co.picture as course_picture, us.name as tutor_name, us.picture as tutor_picture FROM courses co INNER JOIN users us ON us.id = co.tutor_id LIMIT 3");
+$courses = getByQuery("SELECT co.id as course_id, co.name as course_name, co.description as course_description, co.price as course_price, co.picture as course_picture, pa.name as partner_name, pa.logo as partner_logo FROM courses co INNER JOIN partners pa ON pa.id = co.partner_id LIMIT 3");
+$tutors = getByQuery("SELECT us.id as tutor_id, co.name as course_name, co.description as course_description, co.price as course_price, co.picture as course_picture, us.name as tutor_name, us.picture as tutor_picture FROM courses co INNER JOIN users us ON us.id = co.tutor_id LIMIT 3");
+$registeredCourse = getByQuery(sprintf("SELECT course_id FROM admissions WHERE user_id=%s",$uId));
+$outputArray = array();
 
+foreach ($registeredCourse as $item) {
+    $outputArray[] = $item["course_id"];
+}
 if (isset($_POST["cosubmit"])) {
     $check = createContact($_POST);
     if ($check > 0) {
@@ -55,6 +60,7 @@ if (isset($_POST["cosubmit"])) {
 </head>
 
 <body>
+    <div><?php var_dump($outputArray) ?></div>
     <section class="h-screen w-full bg-[#FDF8EE] relative mb-10">
         <header class="fixed top-0 w-full flex justify-between items-center min-h-[5rem] px-12 z-10">
             <div class="flex items-center gap-x-3"><img src="images/logo.svg" alt="logo-eduweb" width="30" height="30"><span class="uppercase text-xl font-bold">eduweb</span></div>
@@ -145,7 +151,11 @@ if (isset($_POST["cosubmit"])) {
                         </div>
                     </div>
                     <div class='absolute bottom-0 left-1/2 -translate-x-1/2'>
-                        <a href="" class="px-6 py-3 rounded-3xl bg-[#FF7426] text-white font-medium">Join Course</a>
+                        <?php if (in_array($c["course_id"], $outputArray)) :?> 
+                            <a class="px-6 py-3 rounded-3xl bg-[#4D2C5E] text-white font-medium">Ayo Belajar</a>
+                        <?php else :?>
+                            <a href="course/admission.php?id=<?= $c["course_id"]?>" class="px-6 py-3 rounded-3xl bg-[#FF7426] text-white font-medium">Join Course</a>
+                        <?php endif;?>
                     </div>
                 </div>
             <?php endforeach; ?>
