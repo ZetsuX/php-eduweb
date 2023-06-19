@@ -28,7 +28,6 @@ if (isset($_POST['lsubmit'])) {
 
     if (mysqli_num_rows($checkUser) == 1) {
         $user = mysqli_fetch_assoc($checkUser);
-        var_dump($user);
         if (password_verify($pass, $user["password"])) {
             $_SESSION["loggedin"] = true;
             $_SESSION["uid"] = $user["id"];
@@ -39,7 +38,7 @@ if (isset($_POST['lsubmit'])) {
                 setcookie("log2", hash('haval160,5', $user["email"]), time() + 1800);
             }
 
-            header("Location: index.php");
+            header('Location: index.php');
             exit;
         }
     }

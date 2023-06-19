@@ -61,8 +61,8 @@ if (isset($_POST['rsubmit'])) {
                         <input type="password" name="rpw" id="rpw" placeholder="Masukkan Password Anda" class="px-4 py-2 border border-[#9E9E9E] rounded-lg">
                     </div>
                     <div class="flex flex-col gap-y-1">
-                        <label class="font-medium" for="rpw2">Password</label>
-                        <input type="password" name="rpw2" id="rpw2" required placeholder="Masukkan Password Anda" class="px-4 py-2 border border-[#9E9E9E] rounded-lg">
+                        <label class="font-medium" for="rpw2">Confirm Password</label>
+                        <input type="password" name="rpw2" id="rpw2" required placeholder="Masukkan Ulang Password Anda" class="px-4 py-2 border border-[#9E9E9E] rounded-lg">
                     </div>
                 </div>
                 <?php if (isset($error)) : ?>
@@ -82,36 +82,6 @@ if (isset($_POST['rsubmit'])) {
             </div>
         </section>
     </main>
-    <!-- <h1>Registration Page</h1>
-
-    <a href="login.php" style="float: left">Login</a>
-    <br>
-
-    <form method="post">
-        <ul>
-            <li>
-                <label for="rname">Name : </label>
-                <input type="text" name="rname" id="rname" required>
-            </li>
-
-            <li>
-                <label for="remail">Email : </label>
-                <input type="email" name="remail" id="remail" required>
-            </li>
-
-            <li>
-                <label for="rpw">Password : </label>
-                <input type="password" name="rpw" id="rpw" required>
-            </li>
-
-            <li>
-                <label for="rpw2">Confirm Password : </label>
-                <input type="password" name="rpw2" id="rpw2" required>
-            </li>
-            <br>
-            <button type="submit" name="rsubmit">Register</button>
-        </ul>
-    </form> -->
 </body>
 
 </html>
