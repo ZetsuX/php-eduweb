@@ -2,7 +2,7 @@
 require 'utils/functions.php';
 
 if (isset($_POST['rsubmit'])) {
-    $check = registerUser($_POST);
+    $check = registerUser($_POST,'u');
     if ($check > 0) {
         echo "
                 <script>

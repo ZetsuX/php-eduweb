@@ -13,10 +13,10 @@
     $tutorPerPage = 5;
     $currentPage = (isset($_GET['page']) ? $_GET['page'] : 1);
     $firstIndex = ($currentPage-1)*$tutorPerPage;
-    $tutorTotal = count(getByQuery("SELECT * FROM tutors"));
+    $tutorTotal = count(getByQuery("SELECT * FROM users WHERE role='t'"));
     $pageCount = ceil($tutorTotal/$tutorPerPage);
     
-    $tutors = getByQuery("SELECT * FROM tutors ORDER BY id ASC LIMIT $firstIndex, $tutorPerPage");
+    $tutors = getByQuery("SELECT * FROM users WHERE role='t' ORDER BY id ASC LIMIT $firstIndex, $tutorPerPage");
 ?>
 
 <!DOCTYPE html>

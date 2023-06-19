@@ -10,8 +10,8 @@ require 'utils/functions.php';
 
 $uId = $_SESSION["uid"];
 
-$courses = getByQuery("SELECT co.name as course_name, co.description as course_description, co.price as course_price, pa.name as partner_name, pa.logo as partner_logo FROM courses co INNER JOIN partners pa ON pa.id = co.partner_id ORDER BY co.id ASC LIMIT 3");
-$tutors = getByQuery("SELECT * FROM users WHERE role = 't' ORDER BY id ASC LIMIT 3");
+$courses = getByQuery("SELECT co.name as course_name, co.description as course_description, co.price as course_price, co.picture as course_picture, pa.name as partner_name, pa.logo as partner_logo FROM courses co INNER JOIN partners pa ON pa.id = co.partner_id LIMIT 3");
+$tutors = getByQuery("SELECT co.name as course_name, co.description as course_description, co.price as course_price, co.picture as course_picture, us.name as tutor_name, us.picture as tutor_picture FROM courses co INNER JOIN users us ON us.id = co.tutor_id LIMIT 3");
 
 if (isset($_POST["cosubmit"])) {
     $check = createContact($_POST);
@@ -114,93 +114,41 @@ if (isset($_POST["cosubmit"])) {
             <p>Lorem ipsum is simply dummy text of the printing.</p>
         </div>
         <div class="w-full justify-between flex flex-row py-24 gap-x-8">
-            <div class="w-1/3 px-2 pt-2 py-10 shadow-lg rounded-lg relative">
-                <img src="images/courses.png" alt="">
-                <div class='text-[#ACACAC] flex justify-between w-full items-center pt-2'>
-                    <h3>Frontend Engineer</h3>
-                    <img src="images/rating.png" alt="" width='80px'>
-                </div>
-                <div>
-                    <h3 class='font-semibold'>Frontend Engineering for Beginners</h3>
-                    <p class='text-[#FF7426] font-semibold'>Rp 129.000</p>
-                </div>
-                <div class="w-full border-2 border-dashed my-2"></div>
-                <div class='flex gap-x-4'>
-                    <div class="flex gap-x-2 justify-center items-center">
-                        <i class="fa-regular fa-clock"></i>
-                        <h3 class="text-[#ACACAC] text-sm" >22hr 30min</h3>
+            <?php $i = 1 ?>
+            <?php foreach($courses as $c) :?>
+                <div class="w-1/3 px-2 pt-2 py-10 shadow-lg rounded-lg relative">
+                    <div class='w-full h-[250px] overflow-hidden rounded-lg relative'>
+                        <img src="<?= $c['course_picture'] ?>" alt="" class='object-cover'>
+                        <img src="<?= $c['partner_logo'] ?>" alt="" class='absolute top-0' width='40px'>
                     </div>
-                    <div class="flex gap-x-2 justify-center items-center">
-                        <i class="fa-solid fa-video"></i>
-                        <h3 class="text-[#ACACAC] text-sm" >34 Courses</h3>
+                    <div class='text-[#ACACAC] flex justify-between w-full items-center pt-2'>
+                        <h3><?= $c['course_name'] ?></h3>
+                        <img src="images/rating.png" alt="" width='80px'>
                     </div>
-                    <div class="flex gap-x-2 justify-center items-center">
-                        <i class="fa-solid fa-download"></i>
-                        <h3 class="text-[#ACACAC]" >250 Sales</h3>
+                    <div>
+                        <h3 class='font-semibold align-justify truncate '><?= $c['course_description'] ?></h3>
+                        <p class='text-[#FF7426] font-semibold'>Rp <?= $c['course_price'] ?></p>
                     </div>
-                </div>
-                <div class='absolute bottom-0 left-1/2 -translate-x-1/2'>
-                    <a href="" class="px-6 py-3 rounded-3xl bg-[#FF7426] text-white font-medium">Join Course</a>
-                </div>
-            </div>
-            <div class="w-1/3 px-2 pt-2 py-10 shadow-lg rounded-lg relative">
-                <img src="images/courses2.png" alt="">
-                <div class='text-[#ACACAC] flex justify-between w-full items-center pt-2'>
-                    <h3>Backend Engineer</h3>
-                    <img src="images/rating.png" alt="" width='80px'>
-                </div>
-                <div>
-                    <h3 class='font-semibold'>Backend Engineering for Beginners</h3>
-                    <p class='text-[#FF7426] font-semibold'>Rp 259.000</p>
-                </div>
-                <div class="w-full border-2 border-dashed my-2"></div>
-                <div class='flex gap-x-4'>
-                    <div class="flex gap-x-2 justify-center items-center">
-                        <i class="fa-regular fa-clock"></i>
-                        <h3 class="text-[#ACACAC] text-sm" >22hr 30min</h3>
+                    <div class="w-full border-2 border-dashed my-2"></div>
+                    <div class='flex gap-x-4'>
+                        <div class="flex gap-x-2 justify-center items-center">
+                            <i class="fa-regular fa-clock"></i>
+                            <h3 class="text-[#ACACAC] text-sm" >22hr 30min</h3>
+                        </div>
+                        <div class="flex gap-x-2 justify-center items-center">
+                            <i class="fa-solid fa-video"></i>
+                            <h3 class="text-[#ACACAC] text-sm" >34 Courses</h3>
+                        </div>
+                        <div class="flex gap-x-2 justify-center items-center">
+                            <i class="fa-solid fa-download"></i>
+                            <h3 class="text-[#ACACAC]" >250 Sales</h3>
+                        </div>
                     </div>
-                    <div class="flex gap-x-2 justify-center items-center">
-                        <i class="fa-solid fa-video"></i>
-                        <h3 class="text-[#ACACAC] text-sm" >34 Courses</h3>
-                    </div>
-                    <div class="flex gap-x-2 justify-center items-center">
-                        <i class="fa-solid fa-download"></i>
-                        <h3 class="text-[#ACACAC]" >250 Sales</h3>
+                    <div class='absolute bottom-0 left-1/2 -translate-x-1/2'>
+                        <a href="" class="px-6 py-3 rounded-3xl bg-[#FF7426] text-white font-medium">Join Course</a>
                     </div>
                 </div>
-                <div class='absolute bottom-0 left-1/2 -translate-x-1/2'>
-                    <a href="" class="px-6 py-3 rounded-3xl bg-[#FF7426] text-white font-medium">Join Course</a>
-                </div>
-            </div>
-            <div class="w-1/3 px-2 pt-2 py-10 shadow-lg rounded-lg relative">
-                <img src="images/courses3.png" alt="">
-                <div class='text-[#ACACAC] flex justify-between w-full items-center pt-2'>
-                    <h3>Fullstack Engineer</h3>
-                    <img src="images/rating.png" alt="" width='80px'>
-                </div>
-                <div>
-                    <h3 class='font-semibold'>Fullstack Engineering for Beginners</h3>
-                    <p class='text-[#FF7426] font-semibold'>Rp 199.000</p>
-                </div>
-                <div class="w-full border-2 border-dashed my-2"></div>
-                <div class='flex gap-x-4'>
-                    <div class="flex gap-x-2 justify-center items-center">
-                        <i class="fa-regular fa-clock"></i>
-                        <h3 class="text-[#ACACAC] text-sm" >22hr 30min</h3>
-                    </div>
-                    <div class="flex gap-x-2 justify-center items-center">
-                        <i class="fa-solid fa-video"></i>
-                        <h3 class="text-[#ACACAC] text-sm" >34 Courses</h3>
-                    </div>
-                    <div class="flex gap-x-2 justify-center items-center">
-                        <i class="fa-solid fa-download"></i>
-                        <h3 class="text-[#ACACAC]" >250 Sales</h3>
-                    </div>
-                </div>
-                <div class='absolute bottom-0 left-1/2 -translate-x-1/2'>
-                    <a href="" class="px-6 py-3 rounded-3xl bg-[#FF7426] text-white font-medium">Join Course</a>
-                </div>
-            </div>
+            <?php endforeach; ?>
         </div>
         <div class='text-center text-slate-800 font-semibold w-fit border-b mx-auto border-slate-700'>
             <a href='courses.php'>Lihat Semua</a>
@@ -240,93 +188,40 @@ if (isset($_POST["cosubmit"])) {
             <p>Lorem ipsum is simply dummy text of the printing.</p>
         </div>
         <div class="w-full justify-between flex flex-row py-24 gap-x-8">
-            <div class="w-1/3 px-2 pt-2 py-10 shadow-lg rounded-lg relative">
-                <img src="images/tutor.png" alt="">
-                <div class='text-[#ACACAC] flex justify-between w-full items-center pt-2'>
-                    <h3>Basic Frontend</h3>
-                    <img src="images/rating.png" alt="" width='80px'>
-                </div>
-                <div>
-                    <h3 class='font-semibold'>Calvin Janitra</h3>
-                    <p class='text-[#FF7426] font-semibold'>Frontend Developer in Tokopedia</p>
-                </div>
-                <div class="w-full border-2 border-dashed my-2"></div>
-                <div class='flex gap-x-4'>
-                    <div class="flex gap-x-2 justify-center items-center">
-                        <i class="fa-regular fa-clock"></i>
-                        <h3 class="text-[#ACACAC] text-sm" >22hr 30min</h3>
+            <?php $i = 1 ?>
+            <?php foreach($tutors as $t) :?>
+                <div class="w-1/3 px-2 pt-2 py-10 shadow-lg rounded-lg relative">
+                    <div class="w-full h-[200px] overflow-hidden rounded-lg">
+                        <img src="<?= $t['tutor_picture'] ?>" alt="" class='object-cover'>
                     </div>
-                    <div class="flex gap-x-2 justify-center items-center">
-                        <i class="fa-solid fa-video"></i>
-                        <h3 class="text-[#ACACAC] text-sm" >34 Courses</h3>
+                    <div class='text-[#ACACAC] flex justify-between w-full items-center pt-2'>
+                        <h3><?= $t['course_name'] ?></h3>
+                        <img src="images/rating.png" alt="" width='80px'>
                     </div>
-                    <div class="flex gap-x-2 justify-center items-center">
-                        <i class="fa-solid fa-download"></i>
-                        <h3 class="text-[#ACACAC]" >250 Sales</h3>
+                    <div>
+                        <h3 class='font-semibold'><?= $t['tutor_name'] ?></h3>
+                        <p class='text-[#FF7426] font-semibold truncate'><?= $t['course_description'] ?></p>
                     </div>
-                </div>
-                <div class='absolute bottom-0 left-1/2 -translate-x-1/2'>
-                    <a href="" class="px-6 py-3 rounded-3xl bg-[#FF7426] text-white font-medium">Join Course</a>
-                </div>
-            </div>
-            <div class="w-1/3 px-2 pt-2 py-10 shadow-lg rounded-lg relative">
-                <img src="images/tutor.png" alt="">
-                <div class='text-[#ACACAC] flex justify-between w-full items-center pt-2'>
-                    <h3>Advanced Frontend</h3>
-                    <img src="images/rating.png" alt="" width='80px'>
-                </div>
-                <div>
-                    <h3 class='font-semibold'>Zhafran Dzaky</h3>
-                    <p class='text-[#FF7426] font-semibold'>Senior Frontend Developer in Spotify</p>
-                </div>
-                <div class="w-full border-2 border-dashed my-2"></div>
-                <div class='flex gap-x-4'>
-                    <div class="flex gap-x-2 justify-center items-center">
-                        <i class="fa-regular fa-clock"></i>
-                        <h3 class="text-[#ACACAC] text-sm" >22hr 30min</h3>
+                    <div class="w-full border-2 border-dashed my-2"></div>
+                    <div class='flex gap-x-4'>
+                        <div class="flex gap-x-2 justify-center items-center">
+                            <i class="fa-regular fa-clock"></i>
+                            <h3 class="text-[#ACACAC] text-sm" >22hr 30min</h3>
+                        </div>
+                        <div class="flex gap-x-2 justify-center items-center">
+                            <i class="fa-solid fa-video"></i>
+                            <h3 class="text-[#ACACAC] text-sm" >34 Courses</h3>
+                        </div>
+                        <div class="flex gap-x-2 justify-center items-center">
+                            <i class="fa-solid fa-download"></i>
+                            <h3 class="text-[#ACACAC]" >250 Sales</h3>
+                        </div>
                     </div>
-                    <div class="flex gap-x-2 justify-center items-center">
-                        <i class="fa-solid fa-video"></i>
-                        <h3 class="text-[#ACACAC] text-sm" >34 Courses</h3>
-                    </div>
-                    <div class="flex gap-x-2 justify-center items-center">
-                        <i class="fa-solid fa-download"></i>
-                        <h3 class="text-[#ACACAC]" >250 Sales</h3>
+                    <div class='absolute bottom-0 left-1/2 -translate-x-1/2'>
+                        <a href="" class="px-6 py-3 rounded-3xl bg-[#FF7426] text-white font-medium">Join Course</a>
                     </div>
                 </div>
-                <div class='absolute bottom-0 left-1/2 -translate-x-1/2'>
-                    <a href="" class="px-6 py-3 rounded-3xl bg-[#FF7426] text-white font-medium">Join Course</a>
-                </div>
-            </div>
-            <div class="w-1/3 px-2 pt-2 py-10 shadow-lg rounded-lg relative">
-                <img src="images/tutor.png" alt="">
-                <div class='text-[#ACACAC] flex justify-between w-full items-center pt-2'>
-                    <h3>Fullstack Engineer</h3>
-                    <img src="images/rating.png" alt="" width='80px'>
-                </div>
-                <div>
-                    <h3 class='font-semibold'>Kevin Nathanael</h3>
-                    <p class='text-[#FF7426] font-semibold'>Backend Developer in Shopee</p>
-                </div>
-                <div class="w-full border-2 border-dashed my-2"></div>
-                <div class='flex gap-x-4'>
-                    <div class="flex gap-x-2 justify-center items-center">
-                        <i class="fa-regular fa-clock"></i>
-                        <h3 class="text-[#ACACAC] text-sm" >22hr 30min</h3>
-                    </div>
-                    <div class="flex gap-x-2 justify-center items-center">
-                        <i class="fa-solid fa-video"></i>
-                        <h3 class="text-[#ACACAC] text-sm" >34 Courses</h3>
-                    </div>
-                    <div class="flex gap-x-2 justify-center items-center">
-                        <i class="fa-solid fa-download"></i>
-                        <h3 class="text-[#ACACAC]" >250 Sales</h3>
-                    </div>
-                </div>
-                <div class='absolute bottom-0 left-1/2 -translate-x-1/2'>
-                    <a href="" class="px-6 py-3 rounded-3xl bg-[#FF7426] text-white font-medium">Join Course</a>
-                </div>
-            </div>
+            <?php endforeach; ?>
         </div>
         <div class='text-center text-slate-800 font-semibold w-fit border-b mx-auto border-slate-700'>
             <a href='tutors.php'>Lihat Semua</a>
